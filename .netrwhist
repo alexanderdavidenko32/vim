@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/chrno/soft/vim/figutive/plugin'
+let g:netrw_dirhist_2='/home/chrno/www/proxy/resources/tram-line/js/custom/map'
+let g:netrw_dirhist_3='/usr/share/maven'
+let g:netrw_dirhist_4='/home/chrno/soft/vim/matchtagalways/MatchTagAlways-master/python'
