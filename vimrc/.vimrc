@@ -44,6 +44,9 @@ let g:Powerline_symbols = 'fancy'
 "let g:Powerline_colorscheme = 'solarized256'
 "let g:Powerline_stl_path_style = 'full'
 
+" langmap for russian spells
+set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+
 set laststatus=2   " always show status line
 " old status bar
 "set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]
@@ -143,7 +146,6 @@ let tagbar_autoclose = 1
 let g:tagbar_statusline_hook = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_leave_hook = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_dstwin_enter_hook = 'call Pl#UpdateStatusline(1)'
-
 
 " J - merge lines
 " ysiw" : Hello world => "Hello" world
