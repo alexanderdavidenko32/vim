@@ -92,16 +92,16 @@ imap <F4> <Esc>:NERDTreeToggle<CR>
 map <F4> <Esc>:NERDTreeToggle<CR>
 
 " F5 - open new tab
-imap <F5> <Esc>:browse tabnew<CR>
-map <F5> <Esc>:browse tabnew<CR>
+"imap <F5> <Esc>:browse tabnew<CR>
+"map <F5> <Esc>:browse tabnew<CR>
 
-" F6 - previous tab
-imap <F6> <Esc> :tabprev <CR>i
-map <F6> :tabprev <CR>
+" F5 - previous tab
+imap <F5> <Esc> :tabprev <CR>i
+map <F5> :tabprev <CR>
 
-" F7 - next tab
-imap <F7> <Esc> :tabnext <CR>i
-map <F7> :tabnext <CR>
+" F6 - next tab
+imap <F6> <Esc> :tabnext <CR>i
+map <F6> :tabnext <CR>
 
 " F8 - tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
