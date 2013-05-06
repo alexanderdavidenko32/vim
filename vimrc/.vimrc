@@ -13,7 +13,9 @@ syntax on
 "important: colorscheme settings should be after 'syntax on' setting
 set background=dark
 set t_Co=256
+set t_ut=
 let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
 colorscheme solarized
 
 "format settings
@@ -29,6 +31,7 @@ set expandtab
 set autoindent
 set smartindent
 set cursorline
+set noswapfile
 
 "chars
 "set list
@@ -39,7 +42,7 @@ set listchars=eol:↲,tab:→→,trail:↔,nbsp:·,
 
 "status bar
 " powerline
-set timeout timeoutlen=1000 ttimeoutlen=50
+set timeout ttimeoutlen=50
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_colorscheme = 'solarized256'
 "let g:Powerline_stl_path_style = 'full'
@@ -72,6 +75,10 @@ let NERDTreeShowHidden=1
 let NERDTreeCaseSensitiveSort=1
 
 "Hotkeys
+
+" remove annoing Ex mode prompt
+map Q <Nop>
+
 " F2 - save file
 nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i
@@ -147,6 +154,16 @@ let g:tagbar_statusline_hook = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_leave_hook = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_dstwin_enter_hook = 'call Pl#UpdateStatusline(1)'
 
+""""""""""""""
+" tmux fixes "
+""""""""""""""
+" Handle tmux $TERM quirks in vim
+"if $TERM =~ '^screen-256color'
+    "map <Esc>OH <Home>
+    "map! <Esc>OH <Home>
+    "map <Esc>OF <End>
+    "map! <Esc>OF <End>
+"endif
 " J - merge lines
 " ysiw" : Hello world => "Hello" world
 " cs"' : "Hello" world => 'Hello' world
