@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/chrno/projects/rail/tram/.git/refs/remotes'
-let g:netrw_dirhist_2='/home/chrno/projects/rail/tram/.git/refs/remotes/origin'
-let g:netrw_dirhist_3='/home/chrno/projects/rail/tram/infrastructure-tram/src/main/webapp/WEB-INF/resources/es-admin-ui/js/controller/is/tram'
-let g:netrw_dirhist_4='/home/chrno/www/test/edc/edc/core/src/main/webapp/WEB-INF/resources/edc-ui/js/view/user'

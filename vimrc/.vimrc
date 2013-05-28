@@ -32,6 +32,7 @@ set autoindent
 set smartindent
 set cursorline
 set noswapfile
+"set wrap
 
 "chars
 "set list
