@@ -107,6 +107,16 @@ map <F6> :tabnext <CR>
 " F8 - tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
+" F9 - user menu set encoding
+"Convert file encoding
+set wildmenu
+set wcm=
+menu SetEnc.cp1251 :set fenc=cp1251<CR>
+menu SetEnc.koi8-r :set fenc=koi8-r<CR>
+menu SetEnc.cp866 :set fenc=ibm866<CR>
+menu SetEnc.utf-8 :set fenc=utf-8<CR>
+map <F9> :emenu SetEnc.<Tab>
+
 " F12 - user menu with encoding
 set wildmenu
 set wcm=<Tab>
