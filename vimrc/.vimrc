@@ -130,6 +130,7 @@ map <F12> :emenu Encoding.<Tab>
 " copy on Ctrl+C to X clipboard
 vmap <C-C> "+yi
 
+autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
 " CTRL+Space omnicomplete
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
