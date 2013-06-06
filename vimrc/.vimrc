@@ -1,4 +1,5 @@
 filetype plugin on
+filetype indent on
 
 "general settings
 set number
