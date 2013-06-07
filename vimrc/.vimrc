@@ -1,8 +1,9 @@
 filetype plugin on
 filetype indent on
 
-"general settings
-set number
+" ==============================================================================
+" General settings
+" ==============================================================================
 set hlsearch
 set incsearch
 set mouse=a
@@ -10,12 +11,22 @@ set foldenable
 set foldcolumn=1
 syntax on
 
+" Showing line numbers and length
+set number " show line numbers
+set tw=79 " width of document (used by gd)
+set nowrap " don't automatically wrap on load
+set fo-=t " don't automatically wrap text when typing
+" To show vertical line uncomment below
+set colorcolumn=80
+"highlight ColorColumn ctermbg=233
+
 "colorscheme settings
 "important: colorscheme settings should be after 'syntax on' setting
 set background=dark
 set t_Co=256
 set t_ut=
 let g:solarized_termcolors=256
+
 "let g:solarized_termtrans=1
 colorscheme solarized
 
@@ -24,7 +35,9 @@ colorscheme solarized
 "set textwidth=1
 set showbreak=->
 
-"tab settings
+" ==============================================================================
+" Tab settings
+" ==============================================================================
 set tabstop=4
 set shiftwidth=4
 set smarttab
@@ -32,8 +45,17 @@ set expandtab
 set autoindent
 set smartindent
 set cursorline
+
+" Disable backup and swap files
+set nobackup
+set nowritebackup
 set noswapfile
+
 "set wrap
+
+" Automatic reloading of .vimrc
+" powerline doesn't works
+"autocmd! bufwritepost .vimrc source %
 
 "chars
 "set list
@@ -42,19 +64,20 @@ set listchars=eol:↲,tab:→→,trail:↔,nbsp:·,
 " shared clipboard
 "set clipboard=unnamed
 
-"status bar
+" ==============================================================================
+" Status bar
+" ==============================================================================
 " powerline
 set timeout ttimeoutlen=50
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_colorscheme = 'solarized256'
 "let g:Powerline_stl_path_style = 'full'
+" old status bar
+"set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]
+set laststatus=2   " always show status line
 
 " langmap for russian spells
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
-
-set laststatus=2   " always show status line
-" old status bar
-"set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]
 
 " highlight trailing spaces
 au BufNewFile,BufRead * let b:mtrailingws=matchadd('ErrorMsg', '\s\+$', -1)
@@ -72,11 +95,15 @@ endif
 " For local replace
 nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
 
-"NERDTree Settings
+" ==============================================================================
+" NERDTree Settings
+" ==============================================================================
 let NERDTreeShowHidden=1
 let NERDTreeCaseSensitiveSort=1
 
-"Hotkeys
+" ==============================================================================
+"  Hotkeys
+" ==============================================================================
 
 " remove annoing Ex mode prompt
 map Q <Nop>
@@ -138,7 +165,9 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-x>\<lt>C-o>"
 imap <C-@> <C-Space>
 
-" zen coding part
+" ==============================================================================
+" zen coding
+" ==============================================================================
 "
 " zen coding expand abbreviature
 let g:user_zen_expandabbr_key='<C-e>'
@@ -163,20 +192,14 @@ let NERDTreeShowBookmarks=1
 let tagbar_autofocus = 1
 " Automatically close tagbar window when choosing a tag
 let tagbar_autoclose = 1
-let g:tagbar_statusline_hook = 'call Pl#UpdateStatusline(0)'
-let g:tagbar_leave_hook = 'call Pl#UpdateStatusline(0)'
+let g:tagbar_statusline_hook   = 'call Pl#UpdateStatusline(0)'
+let g:tagbar_leave_hook        = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_dstwin_enter_hook = 'call Pl#UpdateStatusline(1)'
 
-""""""""""""""
-" tmux fixes "
-""""""""""""""
-" Handle tmux $TERM quirks in vim
-"if $TERM =~ '^screen-256color'
-    "map <Esc>OH <Home>
-    "map! <Esc>OH <Home>
-    "map <Esc>OF <End>
-    "map! <Esc>OF <End>
-"endif
+
+" ==============================================================================
+" Useful shortcuts
+" ==============================================================================
 " J - merge lines
 " ysiw" : Hello world => "Hello" world
 " cs"' : "Hello" world => 'Hello' world
