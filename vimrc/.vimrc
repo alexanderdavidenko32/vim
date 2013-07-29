@@ -196,6 +196,16 @@ let g:tagbar_statusline_hook   = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_leave_hook        = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_dstwin_enter_hook = 'call Pl#UpdateStatusline(1)'
 
+" diff current file with saved file
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
 
 " ==============================================================================
 " Useful shortcuts
