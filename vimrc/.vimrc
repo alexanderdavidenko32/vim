@@ -1,3 +1,13 @@
+"=============================================================================
+"     FileName: .vimrc
+"         Desc:
+"       Author: Alexander Davidenko
+"        Email: alexander.davidenko@concept-soft.com
+"     HomePage: http://www.concept-soft.com
+"      Version: 0.0.1
+"   LastChange: 2013-08-02 13:01:55
+"      History:
+"=============================================================================
 filetype plugin on
 filetype indent on
 
@@ -132,6 +142,9 @@ map <F5> :tabprev <CR>
 imap <F6> <Esc> :tabnext <CR>i
 map <F6> :tabnext <CR>
 
+" F7 - author info refresh
+nmap <F7> :AuthorInfoDetect<cr>
+
 " F8 - tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
@@ -205,6 +218,11 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+let g:vimrc_author='Alexander Davidenko'
+let g:vimrc_email='alexander.davidenko@concept-soft.com'
+let g:vimrc_homepage='http://www.concept-soft.com'
+
 
 
 " ==============================================================================
