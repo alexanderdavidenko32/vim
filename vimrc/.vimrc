@@ -53,7 +53,7 @@ set shiftwidth=4
 set smarttab
 set expandtab
 set autoindent
-set smartindent
+"set smartindent
 set cursorline
 
 " Disable backup and swap files
@@ -178,6 +178,11 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-x>\<lt>C-o>"
 imap <C-@> <C-Space>
 
+" Add empty line after and before cursor
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
+
+
 " ==============================================================================
 " zen coding
 " ==============================================================================
@@ -222,8 +227,6 @@ com! DiffSaved call s:DiffWithSaved()
 let g:vimrc_author='Alexander Davidenko'
 let g:vimrc_email='alexander.davidenko@concept-soft.com'
 let g:vimrc_homepage='http://www.concept-soft.com'
-
-
 
 " ==============================================================================
 " Useful shortcuts
