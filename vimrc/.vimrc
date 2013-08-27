@@ -5,9 +5,11 @@
 "        Email: alexander.davidenko@concept-soft.com
 "     HomePage: http://www.concept-soft.com
 "      Version: 0.0.1
-"   LastChange: 2013-08-02 13:01:55
+"   LastChange: 2013-08-21 11:16:06
 "      History:
 "=============================================================================
+execute pathogen#infect()
+
 filetype plugin on
 filetype indent on
 
@@ -74,9 +76,32 @@ set listchars=eol:↲,tab:→→,trail:↔,nbsp:·,
 " shared clipboard
 "set clipboard=unnamed
 
+" syntastic
+let g:syntastic_javascript_checkers = ['jshint']
 " ==============================================================================
 " Status bar
 " ==============================================================================
+" airline settings
+
+"let g:airline_powerline_fonts=0
+"" to use solarized theme just comment below
+"let g:airline_theme='powerlineish'
+
+
+"let g:airline_detect_paste=1
+"let g:airline#extensions#paste#symbol = 'ρ'
+"let g:airline#extensions#whitespace#symbol = 'Ξ'
+
+"let g:airline_left_sep = '⮀'
+"let g:airline_left_alt_sep = '⮁'
+"let g:airline_right_sep = '⮂'
+"let g:airline_right_alt_sep = '⮃'
+""let g:airline#extensions#branch#symbol = '⎇  '
+"let g:airline#extensions#branch#symbol = '⭠ '
+"let g:airline#extensions#readonly#symbol = '⭤'
+"let g:airline_linecolumn_prefix = '⭡'
+"let g:airline#extensions#tagbar#enabled = 1
+
 " powerline
 set timeout ttimeoutlen=50
 let g:Powerline_symbols = 'fancy'
@@ -178,20 +203,15 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-x>\<lt>C-o>"
 imap <C-@> <C-Space>
 
-" Add empty line after and before cursor
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
-
-
 " ==============================================================================
-" zen coding
+" emmet/zen coding
 " ==============================================================================
 "
 " zen coding expand abbreviature
-let g:user_zen_expandabbr_key='<C-e>'
+let g:user_emmet_expandabbr_key='<C-e>'
 
 " <c-y>+j - split-join tag
-let g:user_zen_splitjointag_key='<C-j>'
+let g:user_emmet_splitjointag_key='<C-j>'
 
 " nerdtree settings
 let NERDTreeShowBookmarks=1
@@ -214,6 +234,7 @@ let g:tagbar_statusline_hook   = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_leave_hook        = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_dstwin_enter_hook = 'call Pl#UpdateStatusline(1)'
 
+
 " diff current file with saved file
 function! s:DiffWithSaved()
   let filetype=&ft
@@ -228,6 +249,7 @@ let g:vimrc_author='Alexander Davidenko'
 let g:vimrc_email='alexander.davidenko@concept-soft.com'
 let g:vimrc_homepage='http://www.concept-soft.com'
 
+"let g:snippets_dir = "~/.vim/snippets"
 " ==============================================================================
 " Useful shortcuts
 " ==============================================================================
