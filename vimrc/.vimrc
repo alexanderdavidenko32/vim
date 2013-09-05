@@ -76,8 +76,28 @@ set listchars=eol:↲,tab:→→,trail:↔,nbsp:·,
 " shared clipboard
 "set clipboard=unnamed
 
+" multicursors
+let g:multi_cursor_next_key='<C-m>'
+
 " syntastic
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_checkers = ['w3']
+" ==============================================================================
+" Status bar
+" ==============================================================================
+" airline settings
+
+"let g:airline_powerline_fonts=0
+"" to use solarized theme just comment below
+"let g:airline_theme='powerlineish'
+
+
+"let g:airline_detect_paste=1
+"let g:airline#extensions#paste#symbol = 'ρ'
+"let g:airline#extens
+" syntastic
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_checkers = ['w3']
 " ==============================================================================
 " Status bar
 " ==============================================================================
@@ -215,6 +235,14 @@ let g:user_emmet_splitjointag_key='<C-j>'
 
 " nerdtree settings
 let NERDTreeShowBookmarks=1
+
+" ==============================================================================
+" syntastic
+" ==============================================================================
+" :lnext - next error
+" :leprevious - prev error
+nmap <leader>n :lnext<CR>
+nmap <leader>N :lprevious<CR>
 
 " Align text
 "if exists(":Tabularize")
