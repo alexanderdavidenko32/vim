@@ -77,7 +77,7 @@ set listchars=eol:↲,tab:→→,trail:↔,nbsp:·,
 "set clipboard=unnamed
 
 " multicursors
-let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_next_key='<C-l>'
 
 " syntastic
 let g:syntastic_javascript_checkers = ['jshint']
