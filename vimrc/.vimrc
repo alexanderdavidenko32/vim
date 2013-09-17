@@ -82,6 +82,13 @@ let g:multi_cursor_next_key='<C-l>'
 " syntastic
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['w3']
+
+" ctrlp
+" open file in new tab
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }
 " ==============================================================================
 " Status bar
 " ==============================================================================
