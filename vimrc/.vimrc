@@ -84,11 +84,17 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['w3']
 
 " ctrlp
+" search for git repo
+let g:ctrlp_working_path_mode = 'r'
 " open file in new tab
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
+" git gutter
+let g:gitgutter_eager=0
+
+
 " ==============================================================================
 " Status bar
 " ==============================================================================
