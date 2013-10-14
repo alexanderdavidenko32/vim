@@ -91,6 +91,10 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
+" ignore target directory
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'target',
+  \ }
 " git gutter
 let g:gitgutter_eager=0
 
