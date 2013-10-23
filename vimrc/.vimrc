@@ -271,6 +271,9 @@ nmap <leader>N :lprevious<CR>
   vmap <Leader>t: :Tabularize /:<CR>
 "endif
 
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
 " tagbar autofocus
 let tagbar_autofocus = 1
 " Automatically close tagbar window when choosing a tag
