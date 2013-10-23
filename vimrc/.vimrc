@@ -293,6 +293,19 @@ com! DiffSaved call s:DiffWithSaved()
 let g:vimrc_author='Alexander Davidenko'
 let g:vimrc_email='alexander.davidenko@concept-soft.com'
 let g:vimrc_homepage='http://www.concept-soft.com'
+"
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 
 "let g:snippets_dir = "~/.vim/snippets"
 " ==============================================================================
