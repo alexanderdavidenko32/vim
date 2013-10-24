@@ -82,6 +82,10 @@ let g:multi_cursor_next_key='<C-l>'
 " syntastic
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['w3']
+let g:syntastic_php_checkers=['php']
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_jump=1
+let g:syntastic_full_redraws=1
 
 " ctrlp
 " search for git repo
@@ -93,6 +97,7 @@ let g:ctrlp_prompt_mappings = {
   \ }
 " ignore target directory
 let g:ctrlp_custom_ignore = {
+  \ 'file': '\v\.(exe|so|dll|png|jpg|jpeg|psd|gif)$',
   \ 'dir':  'target',
   \ }
 " git gutter
