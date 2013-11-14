@@ -83,7 +83,6 @@ let g:multi_cursor_next_key='<C-l>'
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['w3']
 let g:syntastic_php_checkers=['php']
-let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_full_redraws=1
 
@@ -197,10 +196,6 @@ set pastetoggle=<F3>
 imap <F4> <Esc>:NERDTreeToggle<CR>
 map <F4> <Esc>:NERDTreeToggle<CR>
 
-" F5 - open new tab
-"imap <F5> <Esc>:browse tabnew<CR>
-"map <F5> <Esc>:browse tabnew<CR>
-
 " F5 - previous tab
 imap <F5> <Esc> :tabprev <CR>i
 map <F5> :tabprev <CR>
@@ -313,7 +308,6 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
-
 
 "let g:snippets_dir = "~/.vim/snippets"
 " ==============================================================================
