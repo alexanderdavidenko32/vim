@@ -5,9 +5,10 @@
 "        Email: alexander.davidenko@concept-soft.com
 "     HomePage: http://www.concept-soft.com
 "      Version: 0.0.1
-"   LastChange: 2013-08-21 11:16:06
+"   LastChange: 2013-12-20 10:24:25
 "      History:
 "=============================================================================
+" run pathogen
 execute pathogen#infect()
 
 filetype plugin on
@@ -16,141 +17,197 @@ filetype indent on
 " ==============================================================================
 " General settings
 " ==============================================================================
-set hlsearch
-set incsearch
-set mouse=a
-set foldenable
-set foldcolumn=1
-syntax on
 
-" Showing line numbers and length
-set number " show line numbers
-set tw=79 " width of document (used by gd)
-set nowrap " don't automatically wrap on load
-set fo-=t " don't automatically wrap text when typing
+" select by mouse in all modes
+set mouse=a
+
+" Open all folds while set.
+set foldenable
+
+" Display Line numbers
+set number
+
+" Disable wrapping long string
+set nowrap
+
+" Width of document (used by gd)
+set tw=79
+
 " To show vertical line uncomment below
 set colorcolumn=80
-"highlight ColorColumn ctermbg=233
 
 "colorscheme settings
 "important: colorscheme settings should be after 'syntax on' setting
 set background=dark
+
+" terminal colors
 set t_Co=256
 set t_ut=
-let g:solarized_termcolors=256
 
-"let g:solarized_termtrans=1
-colorscheme solarized
+" Enable display whitespace characters
+set list
+
+" Setting up how to display whitespace characters
+set listchars=tab:→→,trail:↔,nbsp:·,
+
 
 "format settings
-"set wrapmargin=1
-"set textwidth=1
 set showbreak=->
+
+"set smartindent
+set cursorline
+
+" ==============================================================================
+" Solarized
+" ==============================================================================
+
+" terminal colors for solarized colorcheme
+" important: should be before colorcheme
+let g:solarized_termcolors=256
+
+" Colorcheme
+colorscheme solarized
 
 " ==============================================================================
 " Tab settings
 " ==============================================================================
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set autoindent
-"set smartindent
-set cursorline
 
-" Disable backup and swap files
+" Copy indent from previous line
+set autoindent
+
+" Enable smart indent. it add additional indents whe necessary
+set smartindent
+
+" Replace tabs with spaces
+set expandtab
+
+" Whe you hit tab at start of line, indent added according to shiftwidth value
+set smarttab
+
+" number of spaces to use for each step of indent
+set shiftwidth=4
+
+" Number of spaces that a Tab in the file counts for
+set tabstop=4
+
+" Same but for editing operation (not shure what exactly does it means)
+" but in most cases tabstop and softtabstop better be the same
+set softtabstop=4
+
+" Round indent to multiple of 'shiftwidth'.
+" Indentation always be multiple of shiftwidth
+" Applies to < and > command
+set shiftround
+
+" ==============================================================================
+" Search options
+" ==============================================================================
+
+" Highlight search results
+set hlsearch
+
+" Ignore case in search patterns
+set ignorecase
+
+" Override the 'ignorecase' option if the search patter ncontains upper case characters
+set smartcase
+
+" Live search. While typing a search command, show where the pattern
+set incsearch
+
+" Disable higlighting search result on Enter key
+nnoremap <silent> <cr> :nohlsearch<cr><cr>
+
+" Show matching brackets
+set showmatch
+
+" Make < and > match as well
+set matchpairs+=<:>
+
+" ==============================================================================
+" Edit
+" ==============================================================================
+
+" Add '-' as recognized word symbol. e.g dw delete all 'foo-bar' instead just 'foo'
+set iskeyword+=-
+
+" ==============================================================================
+" Backup
+" ==============================================================================
+
+" Disable backups file
 set nobackup
+
+" Disable vim common sequense for saving.
+" By defalut vim write buffer to a new file, then delete original file
+" then rename the new file.
 set nowritebackup
+
+" Disable swp files
 set noswapfile
 
-"set wrap
-
-" Automatic reloading of .vimrc
-" powerline doesn't works
-"autocmd! bufwritepost .vimrc source %
-
-"chars
-"set list
-set listchars=eol:↲,tab:→→,trail:↔,nbsp:·,
-
-" shared clipboard
-"set clipboard=unnamed
-
+" ==============================================================================
 " multicursors
+" ==============================================================================
+
+" Set hotkey for next selection
 let g:multi_cursor_next_key='<C-l>'
 
+" ==============================================================================
 " syntastic
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_checkers = ['w3']
-let g:syntastic_php_checkers=['php']
-let g:syntastic_auto_jump=1
-let g:syntastic_full_redraws=1
+" ==============================================================================
 
+" set woking mode for syntastic
+let g:syntastic_mode_map = { 'mode': 'passive',
+                            \ 'active_filetypes': ['php', 'js'],
+                            \ 'passive_filetypes': [] }
+
+" set javascript spellchecker
+let g:syntastic_javascript_checkers = ['jshint']
+
+" set php spellchecker
+let g:syntastic_php_checkers = ['php']
+
+" jump to line with error
+let g:syntastic_auto_jump=1
+
+" ==============================================================================
 " ctrlp
+" ==============================================================================
+
 " search for git repo
 let g:ctrlp_working_path_mode = 'r'
+
 " open file in new tab
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
+
 " ignore target directory
 let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|png|jpg|jpeg|psd|gif)$',
   \ 'dir':  'target',
   \ }
+
+" ==============================================================================
 " git gutter
+" ==============================================================================
 let g:gitgutter_eager=0
 
 
 " ==============================================================================
 " Status bar
 " ==============================================================================
-" airline settings
-
-"let g:airline_powerline_fonts=0
-"" to use solarized theme just comment below
-"let g:airline_theme='powerlineish'
-
-
-"let g:airline_detect_paste=1
-"let g:airline#extensions#paste#symbol = 'ρ'
-"let g:airline#extens
-" syntastic
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_checkers = ['w3']
-" ==============================================================================
-" Status bar
-" ==============================================================================
-" airline settings
-
-"let g:airline_powerline_fonts=0
-"" to use solarized theme just comment below
-"let g:airline_theme='powerlineish'
-
-
-"let g:airline_detect_paste=1
-"let g:airline#extensions#paste#symbol = 'ρ'
-"let g:airline#extensions#whitespace#symbol = 'Ξ'
-
-"let g:airline_left_sep = '⮀'
-"let g:airline_left_alt_sep = '⮁'
-"let g:airline_right_sep = '⮂'
-"let g:airline_right_alt_sep = '⮃'
-""let g:airline#extensions#branch#symbol = '⎇  '
-"let g:airline#extensions#branch#symbol = '⭠ '
-"let g:airline#extensions#readonly#symbol = '⭤'
-"let g:airline_linecolumn_prefix = '⭡'
-"let g:airline#extensions#tagbar#enabled = 1
 
 " powerline
 set timeout ttimeoutlen=50
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_colorscheme = 'solarized256'
 "let g:Powerline_stl_path_style = 'full'
-" old status bar
-"set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]
-set laststatus=2   " always show status line
+
+" always show status line
+set laststatus=2
 
 " langmap for russian spells
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
@@ -168,9 +225,6 @@ if has("autocmd")
     au BufWinEnter ?* silent loadview
 endif
 
-" For local replace
-nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
-
 " ==============================================================================
 " NERDTree Settings
 " ==============================================================================
@@ -178,7 +232,7 @@ let NERDTreeShowHidden=1
 let NERDTreeCaseSensitiveSort=1
 
 " ==============================================================================
-"  Hotkeys
+" Hotkeys
 " ==============================================================================
 
 " remove annoing Ex mode prompt
@@ -256,9 +310,11 @@ let NERDTreeShowBookmarks=1
 " ==============================================================================
 " syntastic
 " ==============================================================================
+
 " :lnext - next error
-" :leprevious - prev error
 nmap <leader>n :lnext<CR>
+
+" :leprevious - prev error
 nmap <leader>N :lprevious<CR>
 
 " Align text
