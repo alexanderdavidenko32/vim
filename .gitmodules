@@ -58,3 +58,6 @@
 [submodule "bundle/neocomplache.vim"]
 	path = bundle/neocomplache.vim
 	url = https://github.com/Shougo/neocomplcache.vim.git
+[submodule "bundle/neosnippet.vim"]
+	path = bundle/neosnippet.vim
+	url = https://github.com/Shougo/neosnippet.vim.git
