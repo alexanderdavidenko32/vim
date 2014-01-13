@@ -11,6 +11,9 @@
 " run pathogen
 execute pathogen#infect()
 
+" run tabber plugin
+set tabline=%!tabber#TabLine()
+
 filetype plugin on
 filetype indent on
 
@@ -48,8 +51,7 @@ set t_ut=
 set list
 
 " Setting up how to display whitespace characters
-set listchars=tab:→→,trail:↔,nbsp:·,
-
+set listchars=tab:→→,trail:•,nbsp:·,
 
 "format settings
 set showbreak=->
@@ -109,7 +111,7 @@ set hlsearch
 " Ignore case in search patterns
 set ignorecase
 
-" Override the 'ignorecase' option if the search patter ncontains upper case characters
+" Override the 'ignorecase' option if the search pattern contains upper case characters
 set smartcase
 
 " Live search. While typing a search command, show where the pattern
@@ -199,10 +201,58 @@ let g:gitgutter_eager=0
 " ==============================================================================
 " Status bar
 " ==============================================================================
+" airline settings
+
+" Vim airline color scheme
+let g:airline_theme='powerlineish'
+
+" Use airline fonts
+let g:airline_powerline_fonts = 1
+
+" airline font settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '⮀'
+let g:airline#extensions#tabline#left_alt_sep = '⮁'
+let g:airline#extensions#tabline#right_sep = '⮂'
+let g:airline#extensions#tabline#right_alt_sep = '⮃'
+
+let g:airline_detect_paste=1
+let g:airline#extensions#paste#symbol = 'ρ'
+let g:airline#extensions#whitespace#symbol = 'Ξ'
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+"let g:airline#extensions#branch#symbol = '⎇  '
+let g:airline#extensions#branch#symbol = '⭠ '
+let g:airline#extensions#readonly#symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+
+" enable tagbar extension
+let g:airline#extensions#tagbar#enabled = 1
+
+
+" tmuxline settings
+let g:tmuxline_separators = {
+    \ 'left' : '⮀',
+    \ 'left_alt': '⮁',
+    \ 'right' : '⮂',
+    \ 'right_alt' : '⮃',
+    \ 'space' : ' '}
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : ['#(whoami)', '#(~/.tmux/lan_ip.sh)', '#(~/.tmux/wan_ip.sh)'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W'],
+      \'x'    : ['#(uptime | cut -d " " -f 12,13,14)'],
+      \'y'    : ['#(~/.tmux/weather.sh)', '%R', '%a', '%Y'],
+      \'z'    : ['#H'],
+      \'options' : {'status-justify' : 'left'}}
 
 " powerline
 set timeout ttimeoutlen=50
 let g:Powerline_symbols = 'fancy'
+
 "let g:Powerline_colorscheme = 'solarized256'
 "let g:Powerline_stl_path_style = 'full'
 
@@ -213,7 +263,7 @@ set laststatus=2
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 " highlight trailing spaces
-au BufNewFile,BufRead * let b:mtrailingws=matchadd('ErrorMsg', '\s\+$', -1)
+"au BufNewFile,BufRead * let b:mtrailingws=matchadd('ErrorMsg', '\s\+$', -1)
 
 " remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -228,7 +278,11 @@ endif
 " ==============================================================================
 " NERDTree Settings
 " ==============================================================================
+
+" show hidden files in tree
 let NERDTreeShowHidden=1
+
+" case sensitive sort in tree
 let NERDTreeCaseSensitiveSort=1
 
 " ==============================================================================
@@ -244,6 +298,9 @@ vmap <F2> <esc>:w<cr>i
 imap <F2> <esc>:w<cr>i
 
 " F3 - paste toggle for autoident
+"set pastetoggle=<F3>
+map <F3> :set invpaste paste?<CR>
+imap <F3> <C-O>:set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 " F4 - open new tab
@@ -274,6 +331,9 @@ menu SetEnc.cp866 :set fenc=ibm866<CR>
 menu SetEnc.utf-8 :set fenc=utf-8<CR>
 map <F9> :emenu SetEnc.<Tab>
 
+" F10 - undo tree toggle
+nnoremap <F10> :UndotreeToggle<cr>
+
 " F12 - user menu with encoding
 set wildmenu
 set wcm=<Tab>
@@ -287,7 +347,12 @@ map <F12> :emenu Encoding.<Tab>
 " copy on Ctrl+C to X clipboard
 vmap <C-C> "+yi
 
+" ==============================================================================
+" omnicomplete
+" ==============================================================================
+" omnicomplete for javascript
 autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+
 " CTRL+Space omnicomplete
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
@@ -295,9 +360,31 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 imap <C-@> <C-Space>
 
 " ==============================================================================
+"  neocomplcache + neosnippet
+" ==============================================================================
+
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" Enable snipMate compatibility feature.
+" maybe not works
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+" ==============================================================================
 " emmet/zen coding
 " ==============================================================================
-"
+
 " zen coding expand abbreviature
 let g:user_emmet_expandabbr_key='<C-e>'
 
@@ -337,7 +424,6 @@ let tagbar_autoclose = 1
 let g:tagbar_statusline_hook   = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_leave_hook        = 'call Pl#UpdateStatusline(0)'
 let g:tagbar_dstwin_enter_hook = 'call Pl#UpdateStatusline(1)'
-
 
 " diff current file with saved file
 function! s:DiffWithSaved()
