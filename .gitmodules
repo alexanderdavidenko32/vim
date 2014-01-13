@@ -61,3 +61,6 @@
 [submodule "bundle/neosnippet.vim"]
 	path = bundle/neosnippet.vim
 	url = https://github.com/Shougo/neosnippet.vim.git
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = https://github.com/mbbill/undotree.git
