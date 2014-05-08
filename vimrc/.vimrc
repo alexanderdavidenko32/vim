@@ -34,11 +34,13 @@ set number
 set nowrap
 
 " Width of document (used by gd)
-set tw=79
+"set tw=79
 
 " To show vertical line uncomment below
 set colorcolumn=80
 
+" Turn on syntax highlight
+syntax on
 "colorscheme settings
 "important: colorscheme settings should be after 'syntax on' setting
 set background=dark
@@ -75,7 +77,7 @@ colorscheme solarized
 " ==============================================================================
 
 " Copy indent from previous line
-set autoindent
+"set autoindent
 
 " Enable smart indent. it add additional indents whe necessary
 set smartindent
