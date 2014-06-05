@@ -442,6 +442,7 @@ let g:vimrc_email='alexander.davidenko@concept-soft.com'
 let g:vimrc_homepage='http://www.concept-soft.com'
 "
 " Search for selected text, forwards or backwards.
+" note: check for numlock!
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
