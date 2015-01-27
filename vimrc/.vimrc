@@ -353,20 +353,27 @@ vmap <C-C> "+yi
 " omnicomplete
 " ==============================================================================
 " omnicomplete for javascript
-autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+"autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
 
 " CTRL+Space omnicomplete
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-\ "\<lt>C-n>" :
-\ "\<lt>C-x>\<lt>C-o>"
-imap <C-@> <C-Space>
+"inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+"\ "\<lt>C-n>" :
+"\ "\<lt>C-x>\<lt>C-o>"
+"imap <C-@> <C-Space>
 
 " ==============================================================================
 "  neocomplcache + neosnippet
 " ==============================================================================
 
+" Ctrl+Space neocomlcache
+inoremap <expr><C-Space> pumvisible() ? "\<C-Space>": "\<C-x>\<C-u>"
+imap <C-@> <C-Space>
+
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
+
+" Disable auto complete popup show up
+let g:neocomplcache_disable_auto_complete = 1
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
