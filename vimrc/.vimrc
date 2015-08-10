@@ -347,7 +347,8 @@ menu Encoding.utf-8   :e ++enc=utf-8<CR>
 map <F12> :emenu Encoding.<Tab>
 
 " copy on Ctrl+C to X clipboard
-vmap <C-C> "+yi
+"vmap <C-C> "+yi
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 
 " ==============================================================================
 " omnicomplete
@@ -461,6 +462,7 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
+let g:typescript_indent_disable = 1
 "let g:snippets_dir = "~/.vim/snippets"
 " ==============================================================================
 " Useful shortcuts
@@ -470,3 +472,5 @@ vnoremap <silent> # :<C-U>
 " cs"' : "Hello" world => 'Hello' world
 " ds' : 'Hello' world => Hello world
 " vlllS' : Hello => 'Hell'o
+"
+"let g:formatprg_args_expr_javascript = '"-".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")." -"'

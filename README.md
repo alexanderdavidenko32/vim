@@ -25,3 +25,7 @@ Switch to the `~/.vim` directory, and fetch submodules:
 Upgrading all bundled plugins
 
     git submodule foreach git pull origin master
+
+Install json beatifier
+
+    npm install -g js-beautify
